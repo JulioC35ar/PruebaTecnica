@@ -23,7 +23,8 @@ class DocumentoFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence(), 
-            'usuarioId' => $this->faker->randomElement([1,2,3,4,5])
+            'usuarioId' => $this->faker->randomElement([1,2,3,4,5]),
+            'file_path' => $this->faker->randomElement(["ruta1","ruta2"]),
         ];
     }
 }

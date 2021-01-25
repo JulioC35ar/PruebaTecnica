@@ -20,6 +20,7 @@ class CreateDocumentosTable extends Migration
             $table->foreign('usuarioId')
                 ->references('id')->on('users')
                 ->onDelete('set null');
+            $table->string('file_path')->nullable();
             $table->timestamps();
         });
     }

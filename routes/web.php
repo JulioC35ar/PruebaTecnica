@@ -15,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', [UserController::class, 'welcome'])->name('welcome');
+
 Route::get('usuarios', [UserController::class, 'index'])->name('usuarios.index');
 Route::get('usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
-Route::get('usuarios/edit/{user}', [UserController::class, 'edit'])->name('usuarios.edit');
+Route::post('usuarios', [UserController::class, 'store'])->name('usuarios.store');
+Route::get('usuarios/{user}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
+Route::put('usuarios/{user}', [UserController::class, 'update'])->name('usuarios.update');
+Route::delete('user/{user}', [UserController::class, 'destroy'])->name('usuarios.destroy');
 
 Route::get('documentos', [DocumentoController::class, 'index'])->name('documentos.index');
 Route::get('documentos/create', [DocumentoController::class, 'create'])->name('documentos.create');
@@ -25,8 +31,6 @@ Route::post('documentos', [DocumentoController::class, 'store'])->name('document
 Route::get('documentos/{documento}/edit', [DocumentoController::class, 'edit'])->name('documentos.edit');
 Route::put('documentos/{documento}', [DocumentoController::class, 'update'])->name('documentos.update');
 Route::delete('documento/{documento}', [DocumentoController::class, 'destroy'])->name('documentos.destroy');
-
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

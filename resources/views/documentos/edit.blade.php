@@ -1,34 +1,76 @@
 @extends('layouts.main')
 
-@section('title', 'Editar documento')
+@section('title', 'Editar documento ')
 
 @section('content')
-    <h1>Editar documento</h1>
-    <form action="{{route('documentos.update', $documento)}}" method="post">
-        @csrf
-        @method('put')
-        <label> 
-            Nombre del documento: 
-            <input type="text" name="name" value="{{old('name', $documento->name)}}">
-        </label>
+    <!-- Root element for center items -->
+    <div class="flex flex-col h-screen bg-gray-100">
+        <!-- Card Container -->
+        <div class="grid place-items-center mx-2 my-20 sm:my-auto">
+            <!-- Card -->
+            <div class="bg-white rounded-lg shadow-md lg:shadow-lg" style="width:500px; padding:50px">
 
-        @error('name')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
+                <!-- Card Title -->
+                <h2 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800">
+                    Editar documento
+                </h2>
 
-        <label>
-            Usuario ID
-            <input type="text" name="usuarioId" value="{{old('usuarioId', $documento->usuarioId)}}">
-        </label>
+                <form action="{{route('documentos.update', $documento)}}" method="post" class="mt-10" method="POST" enctype="multipart/form-data">
+                    
+                    @csrf
+                    @method('put')
 
-        @error('usuarioId')
-            <br>
-            <small>*{{$message}}</small>
-            <br>
-        @enderror
+                    <!-- Name Input -->
+                    <label for="name" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Nombre</label>
+                    <input type="text" name="name" value="{{old('name', $documento->name)}}" placeholder="Nombre del usuario" id="name" placeholder="Nombre"
+                        class="block w-full py-3 px-1 mt-2 mb-4
+                        text-gray-800 appearance-none 
+                        border-b-2 border-gray-100
+                        focus:text-gray-500 focus:outline-none focus:border-gray-200"
+                        required />
 
-        <button type="submit">Actualizar</button>
-    </form>
+                    @error('name')
+                        <br>
+                        <small>*{{$message}}</small>
+                        <br>
+                    @enderror
+
+                    <!-- usuarioId Input -->
+                    <label for="user_id" class="block text-xs font-semibold text-gray-600 uppercase">Usuario</label>
+                    <select class="form-control" name="user_id" required>
+
+                        <option>Seleccione usuario</option>
+                    
+                        @foreach ($usuarios as $user)
+                    
+                            <option value="{{ $user->id }} {{ ( $user->id == $used_id) ? 'selected' : '' }}"> 
+                    
+                                {{ $user->id }} - {{ $user->name }} 
+                    
+                            </option>
+                    
+                        @endforeach    
+                    
+                    </select>   
+                    
+                    <!-- file Input -->
+                    <label class="block text-xs font-semibold text-gray-600 uppercase" for="chooseFile" style="margin-top: 20px">Seleccione un archivo</label>
+                    <input type="file" name="file" id="chooseFile"
+                    class="block w-full py-3 px-1 mt-2 
+                    text-gray-800 appearance-none 
+                    border-b-2 border-gray-100
+                    focus:text-gray-500 focus:outline-none focus:border-gray-200"
+                    />
+
+                    <!-- Auth Buttton -->
+                    <button type="submit"
+                        class="w-full py-3 mt-10 bg-gray-800 rounded-sm
+                        font-medium text-white uppercase
+                        focus:outline-none hover:bg-gray-700 hover:shadow-none">
+                        Actualizar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection

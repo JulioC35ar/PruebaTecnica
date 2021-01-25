@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    //Relacion one to many
+    public function documentos(){
+        return $this->hasMany('App\Models\Documento');
+    }
 }
