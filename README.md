@@ -1,3 +1,12 @@
+## Para este proyecto se utilizaron las siguientes utilidades o librerías:
+- Jetstream: https://jetstream.laravel.com/2.x/installation.html
+- sweetalert 2: https://realrashid.github.io/sweet-alert/install
+- composer 2: $composer self-update
+- Tailwind: https://tailwindcss.com/
+- Livewire: https://laravel-livewire.com/
+
+En el caso de Tailwind y Livewire solo se utilizó en una pequeña parte del proyecto, a causa de su complejidad. Se utilizó más que nada para experimentar con nuevas tecnologías, esto debido a que Laravel las recomienda con ahínco desde hace poco.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
